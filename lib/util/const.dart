@@ -31,3 +31,8 @@ class SizeConst {
 
 const defaultDuration = Duration(seconds: 1);
 const maxWidth = 1440.0;
+
+final myTimeLine = [
+  '[September 2021]\nUniversity Insan Pembangunan',
+  'What\'s Next?...',
+];
