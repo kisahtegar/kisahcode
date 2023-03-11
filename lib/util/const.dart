@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 /// Using for Color App
 class ColorConst {
@@ -9,6 +10,7 @@ class ColorConst {
   static const secondaryColor = Color.fromARGB(255, 48, 36, 45);
   // static const secondaryColor = Color(0xFF242430);
   static const darkColor = Color.fromARGB(255, 35, 25, 34);
+  static const shadowColor = Color.fromARGB(255, 232, 105, 200);
 }
 
 /// Using for Padding App
@@ -36,3 +38,11 @@ final myTimeLine = [
   '[September 2021]\nUniversity Insan Pembangunan',
   'What\'s Next?...',
 ];
+
+/// Open and Launching URL.
+Future<void> openUrl(String url) async {
+  final Uri urll = Uri.parse(url);
+  if (!await launchUrl(urll, mode: LaunchMode.externalApplication)) {
+    throw 'Could not launch $url';
+  }
+}

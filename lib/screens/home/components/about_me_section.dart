@@ -71,7 +71,7 @@ class AboutMeSection extends StatelessWidget {
                 ),
               ),
 
-              // Most Used Languages
+              // Most Used Languages & Tools
               Container(
                 padding: const EdgeInsets.all(PaddingConst.defaultPadding),
                 color: ColorConst.secondaryColor,
@@ -82,7 +82,7 @@ class AboutMeSection extends StatelessWidget {
                       padding: const EdgeInsets.only(
                           bottom: PaddingConst.defaultPadding),
                       child: Text(
-                        "Most Used Languages",
+                        "Most Used Languages & Tools",
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
                     ),
@@ -98,15 +98,15 @@ class AboutMeSection extends StatelessWidget {
                         SizedBox(width: PaddingConst.defaultPadding),
                         Expanded(
                           child: AnimatedCircularProgressIndicator(
-                            percentage: 0.15,
-                            label: "Python",
+                            percentage: 0.70,
+                            label: "Firebase",
                           ),
                         ),
                         SizedBox(width: PaddingConst.defaultPadding),
                         Expanded(
                           child: AnimatedCircularProgressIndicator(
-                            percentage: 0.1,
-                            label: "HTML",
+                            percentage: 0.42,
+                            label: "Python",
                           ),
                         ),
                       ],
