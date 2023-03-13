@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kisahcode/screens/home/home_page.dart';
 import 'package:kisahcode/util/const.dart';
 
+import 'components/scroll_behavior.dart';
 import 'util/firebase_options.dart';
 
 void main() async {
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      scrollBehavior: MyCustomScrollBehavior(),
       title: "FroCode",
       theme: ThemeData.dark().copyWith(
         primaryColor: ColorConst.primaryColor,

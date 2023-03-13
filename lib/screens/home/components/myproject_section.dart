@@ -32,21 +32,21 @@ class MyProjectSection extends StatelessWidget {
                 (index) => Padding(
                   padding:
                       const EdgeInsets.only(right: PaddingConst.defaultPadding),
-                  child: ProjectCard(
+                  child: _ProjectCard(
                     myProjectModel: myProjects[index],
                   ),
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
   }
 }
 
-class ProjectCard extends StatelessWidget {
-  const ProjectCard({super.key, required this.myProjectModel});
+class _ProjectCard extends StatelessWidget {
+  const _ProjectCard({required this.myProjectModel});
 
   final MyProjectModel myProjectModel;
 
@@ -68,6 +68,7 @@ class ProjectCard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 90),
             child: Container(
               height: 100,
+              width: 200,
               decoration: BoxDecoration(
                 color: ColorConst.bgColor,
                 borderRadius: const BorderRadius.only(
@@ -83,12 +84,10 @@ class ProjectCard extends StatelessWidget {
                     color: ColorConst.shadowColor.withOpacity(0.3),
                   )
                 ],
-                image: DecorationImage(
-                  image: myProjectModel.imageUrl == null
-                      ? AssetImage(myProjectModel.imageAsset.toString())
-                      : NetworkImage(myProjectModel.imageUrl.toString())
-                          as ImageProvider<Object>,
-                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(5),
+                child: Image.network(myProjectModel.imageUrl.toString()),
               ),
             ),
           ),
