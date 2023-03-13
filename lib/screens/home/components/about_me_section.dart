@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:timelines/timelines.dart';
 
 import '../../../components/animated_progress_indicator.dart';
 import '../../../util/const.dart';
@@ -116,7 +115,7 @@ class AboutMeSection extends StatelessWidget {
                 ),
               ),
 
-              // Time Travel
+              // My Repository
               Container(
                 padding: const EdgeInsets.all(PaddingConst.defaultPadding),
                 color: ColorConst.secondaryColor,
@@ -125,67 +124,60 @@ class AboutMeSection extends StatelessWidget {
                   children: [
                     // title
                     Text(
-                      "Time Travel",
+                      "My Repository",
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
-                    const Spacer(flex: 2),
-                    // Timeline
-                    AspectRatio(
-                      aspectRatio: 2,
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom: 30),
-                        child: Timeline.tileBuilder(
-                          theme: TimelineThemeData(
-                            color: ColorConst.primaryColor,
-                            direction: Axis.horizontal,
-                            connectorTheme: const ConnectorThemeData(
-                              space: 30.0,
-                              thickness: 5.0,
+                    const SizedBox(height: PaddingConst.defaultPadding),
+
+                    // List of my Repository
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            ListTile(
+                              leading:
+                                  Image.asset("assets/icons/flutter-icon.png"),
+                              title: const Text('Flutter'),
+                              onTap: () {
+                                openUrl(
+                                    "https://github.com/kisahtegar/Flutter");
+                              },
                             ),
-                          ),
-                          builder: TimelineTileBuilder.connected(
-                            itemCount: myTimeLine.length,
-                            connectionDirection: ConnectionDirection.before,
-
-                            // Content Text
-                            contentsBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.only(top: 15.0),
-                                child: Text(
-                                  myTimeLine[index],
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              );
-                            },
-
-                            // This will make expended
-                            itemExtentBuilder: (_, __) {
-                              return MediaQuery.of(context).size.width / 4;
-                              // _processes.length;
-                            },
-
-                            // This use to creating Dot.
-                            indicatorBuilder: (context, index) {
-                              return const OutlinedDotIndicator(
-                                borderWidth: 4.0,
-                                color: ColorConst.primaryColor,
-                              );
-                            },
-
-                            // This use to creating Line.
-                            connectorBuilder: (_, index, type) {
-                              return const SolidLineConnector(
-                                color: ColorConst.primaryColor,
-                              );
-                            },
-                          ),
+                            ListTile(
+                              leading:
+                                  Image.asset("assets/icons/python-icon.png"),
+                              title: const Text('Python'),
+                              onTap: () {
+                                openUrl("https://github.com/kisahtegar/Python");
+                              },
+                            ),
+                            ListTile(
+                              leading: Image.asset("assets/icons/cpp-icon.png"),
+                              title: const Text('C++'),
+                              onTap: () {
+                                openUrl("https://github.com/kisahtegar/cpp");
+                              },
+                            ),
+                            ListTile(
+                              leading:
+                                  Image.asset("assets/icons/html-icon.png"),
+                              title: const Text('HTML'),
+                              onTap: () {
+                                openUrl("https://github.com/kisahtegar/html");
+                              },
+                            ),
+                            ListTile(
+                              leading: Image.asset("assets/icons/ahk-icon.png"),
+                              title: const Text('Auto Hot Key'),
+                              onTap: () {
+                                openUrl("https://github.com/kisahtegar/ahk");
+                              },
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                    const Spacer(flex: 2),
+                    const SizedBox(height: PaddingConst.defaultPadding),
                   ],
                 ),
               ),
