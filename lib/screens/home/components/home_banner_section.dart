@@ -44,8 +44,8 @@ class HomeBannerSection extends StatelessWidget {
                 // Title
                 Text(
                   "Explore my experience in the \nProgramming world!",
-                  style: Responsive.isDesktop(context) &&
-                          Responsive.isTabletLarge(context)
+                  style: (Responsive.isDesktop(context) ||
+                          Responsive.isTabletLargeG(context))
                       ? Theme.of(context).textTheme.displaySmall!.copyWith(
                             fontWeight: FontWeight.bold,
                             color: ColorConst.bodyTitleTextColor,
