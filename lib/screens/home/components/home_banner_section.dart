@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../components/icon_button_widget.dart';
 import '../../../util/const.dart';
+import '../../../util/responsive.dart';
 
 class HomeBannerSection extends StatelessWidget {
   const HomeBannerSection({
@@ -13,7 +14,12 @@ class HomeBannerSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 3.5,
+      // aspectRatio: Responsive.isMobile(context) ? 1.5 : 3.5,
+      aspectRatio: Responsive.isMobile(context)
+          ? 1.5
+          : Responsive.isMobileLarge(context)
+              ? 2
+              : 3.5,
       child: Stack(
         fit: StackFit.expand,
         children: [
@@ -38,12 +44,19 @@ class HomeBannerSection extends StatelessWidget {
                 // Title
                 Text(
                   "Explore my experience in the \nProgramming world!",
-                  style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: ColorConst.bodyTitleTextColor,
-                      ),
+                  style: (Responsive.isDesktop(context) ||
+                          Responsive.isTabletLargeG(context))
+                      ? Theme.of(context).textTheme.displaySmall!.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: ColorConst.bodyTitleTextColor,
+                          )
+                      : Theme.of(context).textTheme.headlineSmall!.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: ColorConst.bodyTitleTextColor,
+                          ),
                 ),
-                SizeConst.sizeVer(PaddingConst.defaultPadding),
+                if (Responsive.isMobileLarge(context))
+                  const SizedBox(height: PaddingConst.defaultPadding),
 
                 // Animated text
                 const MyBuildAnimatedText(),
@@ -92,13 +105,18 @@ class MyBuildAnimatedText extends StatelessWidget {
       style: Theme.of(context).textTheme.titleMedium!,
       maxLines: 1,
       child: Row(
-        children: const [
-          DevCodedText(),
-          SizedBox(width: PaddingConst.defaultPadding / 2),
-          Text("I build "),
-          AnimatedText(),
-          SizedBox(width: PaddingConst.defaultPadding / 2),
-          DevCodedText(),
+        children: [
+          if (!Responsive.isMobileLarge(context)) const DevCodedText(),
+          if (!Responsive.isMobileLarge(context))
+            const SizedBox(width: PaddingConst.defaultPadding / 2),
+          const Text("I build "),
+          // const AnimatedText(),
+          Responsive.isMobile(context)
+              ? const Expanded(child: AnimatedText())
+              : const AnimatedText(),
+          if (!Responsive.isMobileLarge(context))
+            const SizedBox(width: PaddingConst.defaultPadding / 2),
+          if (!Responsive.isMobileLarge(context)) const DevCodedText(),
         ],
       ),
     );

@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
 
-import '../../../models/myproject_model.dart';
+import '../../../data/datasources/network_remote_data_source.dart';
+import '../../../data/models/myproject_model.dart';
 import '../../../util/const.dart';
 
-class MyProjectSection extends StatelessWidget {
+class MyProjectSection extends StatefulWidget {
   const MyProjectSection({
     super.key,
   });
+
+  @override
+  State<MyProjectSection> createState() => _MyProjectSectionState();
+}
+
+class _MyProjectSectionState extends State<MyProjectSection> {
+  late Future<List<MyProjectModel>> futureMyProject;
+
+  @override
+  void initState() {
+    super.initState();
+    futureMyProject = NetworkRemoteDataSource.fetchMyProjects();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +40,26 @@ class MyProjectSection extends StatelessWidget {
           // Card view project Section
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: Row(
-              children: List.generate(
-                myProjects.length,
-                (index) => Padding(
-                  padding:
-                      const EdgeInsets.only(right: PaddingConst.defaultPadding),
-                  child: _ProjectCard(
-                    myProjectModel: myProjects[index],
-                  ),
-                ),
-              ),
+            child: FutureBuilder<List<MyProjectModel>>(
+              future: futureMyProject,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Row(
+                    children: List.generate(
+                      snapshot.data!.length,
+                      (index) => Padding(
+                        padding: const EdgeInsets.only(
+                            right: PaddingConst.defaultPadding),
+                        child: _ProjectCard(
+                          myProjectModel: snapshot.data![index],
+                        ),
+                      ),
+                    ),
+                  );
+                } else {
+                  return const Center(child: CircularProgressIndicator());
+                }
+              },
             ),
           ),
         ],
@@ -45,6 +68,7 @@ class MyProjectSection extends StatelessWidget {
   }
 }
 
+/// This Widget to show Card MyProject.
 class _ProjectCard extends StatelessWidget {
   const _ProjectCard({required this.myProjectModel});
 

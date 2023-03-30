@@ -11,6 +11,11 @@ class ColorConst {
   // static const secondaryColor = Color(0xFF242430);
   static const darkColor = Color.fromARGB(255, 35, 25, 34);
   static const shadowColor = Color.fromARGB(255, 232, 105, 200);
+  static const completeColor = Color.fromARGB(255, 214, 79, 147);
+  static const inProgressColor = Color.fromARGB(255, 255, 255, 255);
+  // static const completeColor = Color.fromARGB(255, 114, 94, 104);
+  // static const inProgressColor = Color.fromARGB(255, 199, 94, 194);
+  static const todoColor = Color(0xffd1d2d7);
 }
 
 /// Using for Padding App
