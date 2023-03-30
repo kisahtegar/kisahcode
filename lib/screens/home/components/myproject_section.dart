@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../models/myproject_model.dart';
+import '../../../data/models/myproject_model.dart';
 import '../../../util/const.dart';
 
 class MyProjectSection extends StatelessWidget {
