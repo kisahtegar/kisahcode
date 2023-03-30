@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:kisahcode/util/responsive.dart';
 
 import '../../../components/animated_progress_indicator.dart';
 import '../../../util/const.dart';
+import '../../../util/responsive.dart';
 
 class AboutMeSection extends StatelessWidget {
   const AboutMeSection({

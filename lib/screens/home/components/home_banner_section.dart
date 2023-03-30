@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:kisahcode/util/responsive.dart';
 
 import '../../../components/icon_button_widget.dart';
 import '../../../util/const.dart';
+import '../../../util/responsive.dart';
 
 class HomeBannerSection extends StatelessWidget {
   const HomeBannerSection({

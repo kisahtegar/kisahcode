@@ -1,8 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 
+import '../../../data/datasources/network_remote_data_source.dart';
 import '../../../data/models/myproject_model.dart';
 import '../../../util/const.dart';
 
@@ -21,7 +19,7 @@ class _MyProjectSectionState extends State<MyProjectSection> {
   @override
   void initState() {
     super.initState();
-    futureMyProject = fetchMyProjects();
+    futureMyProject = NetworkRemoteDataSource.fetchMyProjects();
   }
 
   @override
@@ -70,6 +68,7 @@ class _MyProjectSectionState extends State<MyProjectSection> {
   }
 }
 
+/// This Widget to show Card MyProject.
 class _ProjectCard extends StatelessWidget {
   const _ProjectCard({required this.myProjectModel});
 
@@ -140,23 +139,5 @@ class _ProjectCard extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-/// This function will fetching/get MyProjects then return json decode as `List`
-// TODO: Need to change use method from datasources with injection?
-Future<List<MyProjectModel>> fetchMyProjects() async {
-  try {
-    final response = await get(Uri.parse(
-        "https://kisahcode-default-rtdb.asia-southeast1.firebasedatabase.app/myprojects.json"));
-    if (response.statusCode == 200) {
-      List jsonResponse = json.decode(response.body);
-      return jsonResponse.map((data) => MyProjectModel.fromJson(data)).toList();
-    } else {
-      throw Exception('Unexpected error occured!');
-    }
-  } catch (e) {
-    debugPrint("fetchMyProjects: $e");
-    return [];
   }
 }

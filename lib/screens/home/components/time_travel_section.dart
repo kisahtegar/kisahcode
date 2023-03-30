@@ -1,12 +1,10 @@
-import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'package:kisahcode/data/models/timeline_model.dart';
 import 'package:timelines/timelines.dart';
 
 import '../../../data/datasources/network_remote_data_source.dart';
+import '../../../data/models/timeline_model.dart';
 import '../../../util/const.dart';
 import '../../../util/responsive.dart';
 
@@ -26,7 +24,7 @@ class _TimeTravelSectionState extends State<TimeTravelSection> {
   @override
   void initState() {
     super.initState();
-    futureTimeline = fetchTimelines();
+    futureTimeline = NetworkRemoteDataSource.fetchTimelines();
   }
 
   @override
@@ -306,24 +304,5 @@ class _BezierPainter extends CustomPainter {
     return oldDelegate.color != color ||
         oldDelegate.drawStart != drawStart ||
         oldDelegate.drawEnd != drawEnd;
-  }
-}
-
-/// This function will fetching/get Timelines then return json decode as `List`
-// TODO: Need to change use method from datasources with injection?
-Future<List<TimelineModel>> fetchTimelines() async {
-  try {
-    final response = await get(Uri.parse(
-        "https://kisahcode-default-rtdb.asia-southeast1.firebasedatabase.app/timelines.json"));
-    debugPrint(response.body); // For Testing.
-    if (response.statusCode == 200) {
-      List jsonResponse = json.decode(response.body);
-      return jsonResponse.map((data) => TimelineModel.fromJson(data)).toList();
-    } else {
-      throw Exception('Unexpected error occured!');
-    }
-  } catch (e) {
-    debugPrint("fetchTimelines: $e");
-    return [];
   }
 }
