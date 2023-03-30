@@ -1,12 +1,28 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 import '../../../data/models/myproject_model.dart';
 import '../../../util/const.dart';
 
-class MyProjectSection extends StatelessWidget {
+class MyProjectSection extends StatefulWidget {
   const MyProjectSection({
     super.key,
   });
+
+  @override
+  State<MyProjectSection> createState() => _MyProjectSectionState();
+}
+
+class _MyProjectSectionState extends State<MyProjectSection> {
+  late Future<List<MyProjectModel>> futureMyProject;
+
+  @override
+  void initState() {
+    super.initState();
+    futureMyProject = fetchMyProjects();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +42,26 @@ class MyProjectSection extends StatelessWidget {
           // Card view project Section
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: Row(
-              children: List.generate(
-                myProjects.length,
-                (index) => Padding(
-                  padding:
-                      const EdgeInsets.only(right: PaddingConst.defaultPadding),
-                  child: _ProjectCard(
-                    myProjectModel: myProjects[index],
-                  ),
-                ),
-              ),
+            child: FutureBuilder<List<MyProjectModel>>(
+              future: futureMyProject,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Row(
+                    children: List.generate(
+                      snapshot.data!.length,
+                      (index) => Padding(
+                        padding: const EdgeInsets.only(
+                            right: PaddingConst.defaultPadding),
+                        child: _ProjectCard(
+                          myProjectModel: snapshot.data![index],
+                        ),
+                      ),
+                    ),
+                  );
+                } else {
+                  return const Center(child: CircularProgressIndicator());
+                }
+              },
             ),
           ),
         ],
@@ -115,5 +140,23 @@ class _ProjectCard extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+/// This function will fetching/get MyProjects then return json decode as `List`
+// TODO: Need to change use method from datasources with injection?
+Future<List<MyProjectModel>> fetchMyProjects() async {
+  try {
+    final response = await get(Uri.parse(
+        "https://kisahcode-default-rtdb.asia-southeast1.firebasedatabase.app/myprojects.json"));
+    if (response.statusCode == 200) {
+      List jsonResponse = json.decode(response.body);
+      return jsonResponse.map((data) => MyProjectModel.fromJson(data)).toList();
+    } else {
+      throw Exception('Unexpected error occured!');
+    }
+  } catch (e) {
+    debugPrint("fetchMyProjects: $e");
+    return [];
   }
 }
