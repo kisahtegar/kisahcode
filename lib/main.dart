@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'components/scroll_behavior.dart';
 import 'screens/home/home_page.dart';
 import 'util/const.dart';
-import 'util/firebase_options.dart';
+import 'firebase_options.dart';
 
 void main() async {
   // Initialize Firebase
@@ -22,8 +22,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      scrollBehavior: MyCustomScrollBehavior().copyWith(scrollbars: false),
-      title: "FroCode",
+      scrollBehavior: MyCustomScrollBehavior()
+          .copyWith(scrollbars: false, overscroll: false),
+      title: "KisahCode",
       theme: ThemeData.dark().copyWith(
         primaryColor: ColorConst.primaryColor,
         scaffoldBackgroundColor: ColorConst.bgColor,
