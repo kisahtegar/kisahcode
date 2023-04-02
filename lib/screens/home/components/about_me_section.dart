@@ -74,7 +74,8 @@ class AboutMeGridView extends StatelessWidget {
               const Spacer(flex: 2),
               const CircleAvatar(
                 radius: 50,
-                backgroundImage: AssetImage("assets/images/kisah3.jpg"),
+                backgroundImage: NetworkImage(
+                    "https://firebasestorage.googleapis.com/v0/b/kisahcode.appspot.com/o/images%2Fkisah3.jpg?alt=media&token=f4f5472b-c7e0-4227-a40f-5b7501017bd6"),
               ),
               const Spacer(),
               Text(

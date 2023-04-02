@@ -8,6 +8,7 @@ import 'util/const.dart';
 import 'util/firebase_options.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   // Initialize Firebase
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -22,8 +23,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      scrollBehavior: MyCustomScrollBehavior().copyWith(scrollbars: false),
-      title: "FroCode",
+      scrollBehavior: MyCustomScrollBehavior()
+          .copyWith(scrollbars: false, overscroll: false),
+      title: "KisahCode",
       theme: ThemeData.dark().copyWith(
         primaryColor: ColorConst.primaryColor,
         scaffoldBackgroundColor: ColorConst.bgColor,
