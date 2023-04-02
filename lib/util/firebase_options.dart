@@ -21,10 +21,7 @@ class DefaultFirebaseOptions {
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for android - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return android;
       case TargetPlatform.iOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for ios - '
@@ -58,7 +55,19 @@ class DefaultFirebaseOptions {
     messagingSenderId: '213445862546',
     projectId: 'kisahcode',
     authDomain: 'kisahcode.firebaseapp.com',
+    databaseURL:
+        'https://kisahcode-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'kisahcode.appspot.com',
     measurementId: 'G-Q1LTDER5SF',
+  );
+
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyAkXoETSKUMAWgJRhBeE1NUOjT2lJhYCBg',
+    appId: '1:213445862546:android:63be760d59b005ca90324b',
+    messagingSenderId: '213445862546',
+    projectId: 'kisahcode',
+    databaseURL:
+        'https://kisahcode-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'kisahcode.appspot.com',
   );
 }

@@ -5,9 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'components/scroll_behavior.dart';
 import 'screens/home/home_page.dart';
 import 'util/const.dart';
-import 'firebase_options.dart';
+import 'util/firebase_options.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   // Initialize Firebase
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

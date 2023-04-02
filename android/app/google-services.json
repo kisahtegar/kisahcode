@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "213445862546",
+    "firebase_url": "https://kisahcode-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "kisahcode",
+    "storage_bucket": "kisahcode.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213445862546:android:63be760d59b005ca90324b",
+        "android_client_info": {
+          "package_name": "com.example.kisahcode"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "213445862546-hkisfv3du5o81kkpa8u12i9pdqp7ine1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkXoETSKUMAWgJRhBeE1NUOjT2lJhYCBg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "213445862546-hkisfv3du5o81kkpa8u12i9pdqp7ine1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
