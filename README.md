@@ -1,9 +1,9 @@
-# kisahcode leading page
+# <a href="https://kisahcode.web.app/">kisahcode.web.app</a> landing page
 
 <h2>Please have a look.</h2>
 
-<h3 align="left">kisahcode is my leading page, developed in Flutter, and Firebase</h3>
-<h4 align="left">kisahcode is simple website to manage my information, and other.</h4>
+<h3 align="left">kisahcode is my landing page, developed in Flutter, build using HTML renderer, and Firebase</h3>
+<h4 align="left">kisahcode is simple website to manage my information, and other. Link: <a href="https://kisahcode.web.app/">kisahcode.web.app</a></h4>
 
 <table>
   <th><h3>Features</h3></th>
@@ -12,11 +12,11 @@
     <!-- features -->
     <td>
       <ul>
-        <li>✓ About me.</li>
-        <li>✓ My Projects.</li>
-        <li>✓ Time Travel.</li>
-        <li>✓ Other Link</li>
-        <li>✓ Responsive</li>
+        <li>About me.</li>
+        <li>My Projects.</li>
+        <li>Time Travel.</li>
+        <li>Other Link</li>
+        <li>Responsive</li>
       </ul>
     </td>
   </tr>
@@ -31,6 +31,7 @@
 <p align="left">
 
 - 💻 All of my projects are available at [https://github.com/kisahtegar](https://github.com/kisahtegar)
+- 🔗 My landing page available at [kisahcode.web.app](https://kisahcode.web.app)
 - 📫 How to reach me **code.kisahtegar@gmail.com**
 
 </p>
