@@ -12,11 +12,11 @@
     <!-- features -->
     <td>
       <ul>
-        <li>About me.</li>
-        <li>My Projects.</li>
-        <li>Time Travel.</li>
-        <li>Other Link</li>
-        <li>Responsive</li>
+        <li>About me,</li>
+        <li>My Projects,</li>
+        <li>Time Travel,</li>
+        <li>Other Link,</li>
+        <li>Responsive.</li>
       </ul>
     </td>
   </tr>
@@ -30,8 +30,8 @@
 ## About Us
 <p align="left">
 
-- 💻 All of my projects are available at [https://github.com/kisahtegar](https://github.com/kisahtegar)
-- 🔗 My landing page available at [kisahcode.web.app](https://kisahcode.web.app)
+- 💻 All of my projects are available at [github.com/kisahtegar](https://github.com/kisahtegar)
 - 📫 How to reach me **code.kisahtegar@gmail.com**
+- 📄 Know about my experiences [kisahcode.web.app](https://kisahcode.web.app)
 
 </p>
